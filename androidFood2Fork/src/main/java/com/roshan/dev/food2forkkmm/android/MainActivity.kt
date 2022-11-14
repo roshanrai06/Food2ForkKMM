@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.roshan.dev.food2forkkmm.android.presentation.navigation.Navigation
+import dagger.hilt.android.AndroidEntryPoint
 
 @Composable
 fun MyApplicationTheme(
@@ -56,7 +57,7 @@ fun MyApplicationTheme(
         content = content
     )
 }
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,9 +1,11 @@
+
+
 plugins {
     //trick: for the same plugin versions in all sub-modules
-    id("com.android.application").version(Build.gradleBuildTools).apply(false)
-    id("com.android.library").version(Build.gradleBuildTools).apply(false)
-    kotlin("android").version(Kotlin.version).apply(false)
-    kotlin("multiplatform").version(Kotlin.version).apply(false)
+    id(Plugins.androidApplication).version(Build.gradleBuildTools).apply(false)
+    id(Plugins.androidLibrary).version(Build.gradleBuildTools).apply(false)
+    kotlin(KotlinPlugins.android).version(Kotlin.version).apply(false)
+    kotlin(KotlinPlugins.multiplatform).version(Kotlin.version).apply(false)
 }
 buildscript {
     dependencies {
