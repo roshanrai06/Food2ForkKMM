@@ -16,7 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.roshan.dev.food2forkkmm.Greeting
+import com.roshan.dev.food2forkkmm.android.presentation.navigation.Navigation
 
 @Composable
 fun MyApplicationTheme(
@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting(Greeting().greeting())
+                    Navigation()
                 }
             }
         }
