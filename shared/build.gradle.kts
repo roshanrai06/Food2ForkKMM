@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin(KotlinPlugins.serialization) version Kotlin.version
     id("com.squareup.sqldelight")
 }
 
@@ -27,6 +28,8 @@ kotlin {
             dependencies {
                 implementation(Ktor.core)
                 implementation(Ktor.clientSerialization)
+                implementation(Ktor.clientSerializationJson)
+                implementation(Ktor.ktorContentNegotiation)
                 implementation(SQLDelight.runtime)
                 implementation(Kotlinx.datetime)
             }

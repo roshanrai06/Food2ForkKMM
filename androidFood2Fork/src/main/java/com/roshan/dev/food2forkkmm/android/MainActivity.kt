@@ -17,7 +17,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.roshan.dev.food2forkkmm.android.presentation.navigation.Navigation
+import com.roshan.dev.food2forkkmm.datasource.network.KtorClientFactory
 import dagger.hilt.android.AndroidEntryPoint
+import io.ktor.client.request.*
+import io.ktor.http.*
+import io.ktor.util.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
+import kotlin.text.get
 
 @Composable
 fun MyApplicationTheme(
@@ -57,10 +65,22 @@ fun MyApplicationTheme(
         content = content
     )
 }
+const val TOKEN = "Token 9c8b06d329136da358c2d00e76946b0111ce2c48"
+const val BASE_URL = "https://food2fork.ca/api/recipe"
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @OptIn(InternalAPI::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val ktorClient = KtorClientFactory().build()
+        CoroutineScope(IO).launch {
+            val recipeId = 1551
+            val recipe = ktorClient.request("$BASE_URL/get?id=$recipeId") {
+                accept(ContentType.Application.Json)
+                header("Authorization", TOKEN)
+            }
+            println("KtorTest: ${recipe.content}")
+        }
         setContent {
             MyApplicationTheme {
                 Surface(
